@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <title>Book Catalogue</title>
+</head>
+<body>
+    <nav>
+        <!-- This button leads back to the home page -->
+        <form action="/">
+            <button class="go-back"><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#000000"><path d="m287-446.67 240 240L480-160 160-480l320-320 47 46.67-240 240h513v66.66H287Z"/></svg></button>
+        </form>
+    </nav>
+    
+    <!-- This becomes the default page structure if the user wishes to edit a book entry -->
+    <% if(locals.edit){ %>
+        <div class="Entries">
+            <div class="grid-container">
+                <div class="book-image">
+                    <img src="<%= image %>"> <!-- Display book image-->
+                </div>
+                <div>
+                    <div style="text-align: center;"><h1 class="title"><%= title %></h1></div><!-- Display book title -->
+                    <div class="book-entry">
+                        <form method="post" action="/update"><!-- Form to update book entry-->
+                            <input type="hidden" name="id" value="<%= id %>"><!-- Hidden book ID -->
+                            <div class="rate">
+                                <label for="rating">What do you rate this book: </label>
+                                <input type="number" id="rating" max="10" min="1" name="rating" value="<%= rating %>" placeholder="number" required><!-- input to update rating -->
+                            </div>
+                            <div class="note">
+                                <label for="book-note">Notes</label> 
+                                <textarea name="note" id="book-note" rows="14" cols="90" placeholder="Enter a note"><%= note %></textarea> <!-- input to updates notes -->
+                            </div>
+                            
+                            <div class="add-button">
+                             <input type="submit" value="Update"><!-- Submit button -->   
+                            </div>
+                            
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% }else{ %>
+        <!-- This becomes the default page structure if the user wishes to add a book to the "Catalogue" -->
+        <div class="Entries">
+            <div class="grid-container">
+                <div class="book-image">
+                    <img src="<%= image %>"><!-- Book image -->
+                </div>
+                <div>
+                    <div style="text-align: center;"><h1 class="title"><%= title %></h1></div><!-- Book title -->
+                    <div class="book-entry">
+                        <form method="post" action="/add"><!-- Form to add a new book entry -->
+                            <input type="hidden" name="image" value="<%= image %>"><!-- Hidden image field -->
+                            <input type="hidden" value="<%= title %>" name="title"><!-- Hidden title field -->
+                            <input type="hidden" value="<%= isbn %>" name="isbn"><!-- Hidden ISBN field -->
+                            <div class="rate">
+                                <label for="rating">What do you rate this book: </label>
+                                <input type="number" id="rating" max="10" min="1" name="rating" placeholder="number" required><!-- Rating input -->
+                            </div>
+                            <div class="note">
+                                <label for="book-note">Notes</label> 
+                                <textarea name="note" id="book-note" rows="14" cols="90" placeholder="Enter a note"></textarea> <!-- Notes input -->
+                            </div>
+                            
+                            <div class="add-button">
+                             <input type="submit" value="Add"> <!-- Add button -->
+                            </div>
+                            
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } %>
+</body>
+</html>

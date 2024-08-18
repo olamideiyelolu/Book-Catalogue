@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <title>Book Catalogue</title>
+</head>
+<body>
+    <div class="hero">
+        <div>
+            <h1>Welcolme to your very own book catalogue</h1><!-- Page title -->
+        </div>
+        <div>
+            <form id="isbn-input" method="post" action="/find-book"><!-- ISBN search form -->
+                <input type="text" name="isbn" placeholder="Enter ISBN here" autocomplete="off" required><!-- ISBN input field -->
+                <input type="submit" value="Enter" class="isbn-submit"><!-- Submit button -->
+            </form>
+        </div>
+        
+    </div>
+    <div>
+        <nav>
+
+        </nav>
+    </div>
+    <div>
+        <% books.forEach(book => { %>
+            <div class="theContainer">
+                <div class="bookContainer">
+                    <div class="image">
+                        <img src="<%= book.image %>" alt="book cover"><!-- Display book cover -->
+                    </div>
+                    <div>
+                        <div class="title-X-utilities">
+                            <h2><%= book.title %></h2><!-- Display book title -->
+                            <div class="dropdown">
+                                <div class="action">
+                                  <button><span class="material-symbols-outlined">menu</span></button><!-- Dropdown menu button to edit & delete book entries -->  
+                                </div>
+                                
+                                <div class="menu">
+                                    <div>
+                                        <form action="/edit" method="post"><!-- Edit book form -->
+                                            <input type="hidden" value="<%= book.id %>" name="id">
+                                            <button>Edit</button>    
+                                        </form>
+                                        
+                                    </div>
+                                    <div>
+                                        <form action="/delete" method="post"><!-- Delete book form -->
+                                            <input type="hidden" value="<%= book.id %>" name="id">
+                                            <button>Delete</button>    
+                                        </form>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rating-X-note">
+                            <p>You gave this book a <%= book.rating %>/10</p><!-- Display book rating -->
+                            <c><%= book.note %></c><!-- Display book note -->
+                        </div>
+                    </div>
+                </div>     
+             </div>  
+        <% }); %>
+    </div>
+
+    <% if(locals.error){ %>
+        <script>
+            alert("Sorry, seems this book is already in the catalogue")// Display error alert if the book is already in the catalogue
+        </script>
+    <% } %>
+    <script>
+        const buttons = document.querySelectorAll(".action button")
+        const menus = document.querySelectorAll(".menu")
+        
+        buttons.forEach((button,index) =>{
+            const menu = menus[index]            
+            button.addEventListener("click",()=>{
+                if(menu){
+                    menu.classList.toggle("active")// Toggle dropdown menu visibility 
+                };
+            });
+
+            document.addEventListener("click", (event) => {
+                console.log(event)
+                //Close dropdown menu if clicked outside
+                if (!menu.contains(event.target) && !button.contains(event.target)) {
+                    menu.classList.remove("active"); 
+                }
+            });
+        });
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: 'Poppins',sans-serif;
+}
+
+/*           HERO SECTION      */
+.hero{
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    background-color: aqua;
+    text-align: center;
+    background-size: cover;
+}
+
+.hero h1{
+    font-size: clamp(2rem, 5vw, 5rem);
+    padding-top: 20vh;
+    
+}
+
+
+.hero form input{
+    width: 35vw;
+    padding-block: 2.5vh;
+    background-color: #333; 
+    color: #fbf5fd;
+    border: 1px solid #555;  
+    padding-left: 20px; 
+    padding-right: 20px;     
+    border-radius: 15px;     
+    box-shadow: inset 0 0 5px rgba(22, 16, 16, 0.5);
+    transition: background-color 0.3s, border-color 0.3s; 
+    outline: none;
+    font-size: large;
+}
+
+.hero form{
+    padding-block: 7vh ;
+}
+
+#isbn-input .isbn-submit{
+    padding: 5px;
+    width: clamp(50px,60px,70px);
+    cursor:pointer;
+}
+
+@media (max-width: 951px) {
+    .hero {
+        height: 60vh;
+    }
+}
+
+/*               Book Catalogue Section                 */
+
+.image{
+    float: left;
+    margin-right: 20px;
+}
+.theContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.title-X-utilities{
+    text-align: center;
+}
+.title-X-utilities h2{
+    display: inline;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #333;
+}
+.title-X-utilities button{
+    float: right;
+}
+
+.rating-X-note p{
+    font-size: large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding-block: 15px;
+    color: #666666;
+}
+
+.rating-X-note c{
+    font-size: large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding-block: 15px;
+    color: #666666;
+    line-height: 1.5;
+}
+
+.bookContainer{
+    width: 60%; 
+    padding-block: 40px;
+}
+
+
+.dropdown{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: fit-content;
+
+}
+
+.menu{
+    display: none;
+}
+
+.active{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 100%;
+    right: 0;
+    z-index: 1000;
+
+
+}
+.active button{
+    width:4rem;
+    cursor: pointer;
+    margin: 2px;
+    font-size:16px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    color: rgb(75, 73, 73);
+    font-weight:500;
+}
+
+.active button:hover{
+    background-color: grey;
+    color: white;
+}
+
+.action button:hover{
+    color: grey;
+    
+}
+.action button{
+    cursor: pointer;
+    border: none;
+    background-color: white;
+}
+.action{
+    height: fit-content;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+    font-weight: 570;
+}
+
+
+
+
+@media (max-width: 951px) {
+    .image{
+        float: none;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+    .bookContainer{
+        width:85%;
+    }
+}
+
+
+
+
+/* Book enrty */
+
+.go-back{
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    margin: 25px;
+}
+
+svg:hover{
+    fill: rgb(182, 73, 73);
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 30vw 40vw;
+    grid-template-rows: 20em 20vh;
+    gap:10px
+}
+.Entries{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.book-entry{
+    grid-row-start: 1;
+    grid-row-end: 3;
+    display: flex;
+    justify-content: center;
+}
+
+.rate{
+    margin: 2.5vh;
+    text-align: center;
+}
+
+.rate label{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: clamp(1rem, 2vw, 2rem);
+}
+
+#rating{
+    width: 80px;
+    height: 25px;
+    text-align: center;
+    font-size: medium;
+    background-color: #dddddd;
+    color:#666666;
+    padding: 2.5px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    outline: none;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.add-button{
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+}
+.add-button input{
+    height: 40px;
+    width:60px;
+    border-radius: 17px;
+    cursor: pointer;
+    background-color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: medium;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-button input:hover{
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+
+.note{
+    margin: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.note label{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: clamp(1rem, 2vw, 2rem);
+}
+ .title{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+ }
+.book-image{
+    grid-row-start: span 2;
+    display: flex;
+    justify-content: center;
+}
+
+textarea{
+    background-color: #dddddd;
+    color:#666666;
+    padding: 1em;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    outline: none;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+
+
+@media (max-width: 1643px) {
+    .grid-container {
+        grid-template-columns: 70vw;
+        grid-template-rows: 20em 50vh;
+    }
+    .book-image{
+        grid-row-start: span 1;
+    }
+    textarea{
+       height: 10em;
+       width: 60vw; 
+    }
+    .go-back{
+        margin-right: 2px;
+    }
+}
+
+
+
+
+
