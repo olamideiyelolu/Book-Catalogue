@@ -25,7 +25,8 @@
                     <div style="text-align: center;"><h1 class="title"><%= title %></h1></div><!-- Display book title -->
                     <div class="book-entry">
                         <form method="post" action="/update"><!-- Form to update book entry-->
-                            <input type="hidden" name="id" value="<%= id %>"><!-- Hidden book ID -->
+                            <!-- Hidden book ID -->
+                            <input type="hidden" name="id" value="<%= id %>">
                             <div class="rate">
                                 <label for="rating">What do you rate this book: </label>
                                 <input type="number" id="rating" max="10" min="1" name="rating" value="<%= rating %>" placeholder="number" required><!-- input to update rating -->
